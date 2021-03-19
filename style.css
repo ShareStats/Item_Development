@@ -1,12 +1,12 @@
 body:after {
-  background-image: url('images/InfShareStatsSquare.png');
-  background-size: 80px 80px;
+  background-image: url('images/InfShareStatsColor.png');
+  background-size: 243px 50px;
   position: fixed;
-  top: 1.5em;
+  bottom: 1.5em;
   left: 1.5em;
   display: inline-block;
-  width: 80px; 
-  height: 80px;
+  width: 243px; 
+  height: 50px;
   content:"";
   border-radius: 15px;
 }
@@ -16,4 +16,8 @@ body:after {
   box-shadow: none;
   width: 50%;
   height: auto;
+}
+
+H1 H2 H3 {
+  color: #353b43;
 }

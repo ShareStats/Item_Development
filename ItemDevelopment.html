@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="dcterms.date" content="2021-03-19" />
+  <meta name="dcterms.date" content="2021-03-24" />
   <title>ShareStats</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -517,7 +517,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">ShareStats</h1>
   <h1 class="subtitle">Item Development</h1>
-    <h3 class="date">19 mar 2021</h3>
+    <h3 class="date">24 mar 2021</h3>
 </section>
 
 <section id="sharestats" class="title-slide slide level1"><h1>ShareStats</h1><p>Goal of ShareStats</p></section>
@@ -530,7 +530,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>compiling your item</li>
 <li>Quality check</li>
 </ul></section>
-<section><section id="r-studio" class="title-slide slide level1"><h1>R-studio</h1></section><section id="installation" class="slide level2">
+<section><section id="section" class="title-slide slide level1"><h1></h1><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png" /></p></section><section id="installation" class="slide level2">
 <h2>Installation</h2>
 <ul>
 <li>Install R</li>
@@ -553,6 +553,29 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;exams&quot;</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(exams)</span></code></pre></div>
 <p><a href="http://www.r-exams.org/resources/">R/Exams resources page here</a>.</p>
+</section><section id="procedure" class="slide level2">
+<h2>Procedure</h2>
+<p>Resource: Procedure item development in teams.</p>
+<ol type="1">
+<li>Go to project folder</li>
+<li>Navigate to desired taxonomy level 1 folder</li>
+<li>Create a new folder for each new item</li>
+<li>Name your item following convention</li>
+<li>Create HTML version</li>
+<li>Quality check</li>
+</ol>
+</section><section id="naming-convention" class="slide level2">
+<h2>Naming convention</h2>
+<p><small> [abbreviation institution]-[lowest taxonomy level for item]-[nummber ###]-[NL/EN] </small></p>
+<p>example:</p>
+<ul>
+<li>uva-regression-001-nl.Rmd</li>
+</ul>
+<p>If available:</p>
+<ul>
+<li>uva-regression-001-nl-graph01.jpg</li>
+<li>uva-regression-001-nl-data01.sav</li>
+</ul>
 </section></section>
 <section><section id="item-types" class="title-slide slide level1"><h1>Item types</h1><p>There are five item types available in R (<a href="http://www.r-exams.org/intro/dynamic/">Resource</a>).</p>
 <ul>
@@ -560,7 +583,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li><strong>Multiple answer:</strong> <code>extype: mchoice</code> (m: multiple)</li>
 <li><strong>Fill in the blank numbers:</strong> <code>extype: num</code></li>
 <li><strong>Fill in the blank text/essay:</strong> <code>extype: string</code></li>
-<li><strong>Combinatie van bovenstaande:</strong> <code>extype: cloze</code></li>
+<li><strong>Combinations:</strong> <code>extype: cloze</code></li>
 </ul></section><section id="general-item-structur" class="slide level2">
 <h2>General item structur</h2>
 <pre><code>Question
@@ -607,6 +630,39 @@ extype: schoice
 exsolution: 010
 exsection: Descriptive statistics / Summary Statistics / Measures of Location / Mean
 exextra[Type]: Calculation</code></pre>
+</section><section id="multiple-answer" class="slide level2">
+<h2>Multiple answer</h2>
+<pre><code>Question
+========
+
+Which are parametric tests?
+
+Answerlist
+----------
+* t-test
+* signed-rank test
+* ANOVA
+
+Solution
+========
+
+The correct answer the ANOVA test
+
+Answerlist
+----------
+* True. t-test
+* False. signed rank test
+* True. ANOVA
+
+Meta-information
+================
+exname: parametric
+extype: mchoice
+exsolution: 101
+exsection: Inferential Statistics / Non-parametric Techniques / Signed Rank test
+exextra[Type]: Conceptual, Test choice
+exextra[Language]: English
+exextra[Level]: Statistical Reasoning</code></pre>
 </section><section id="fill-in-the-blank-number" class="slide level2">
 <h2>Fill in the blank number</h2>
 <pre><code>Question
@@ -627,10 +683,45 @@ exsolution: 5
 extol: 0
 exsection: Descriptive statistics / Summary Statistics / Measures of Location / Mean
 exextra[Type]: Calculation</code></pre>
-</section><section id="fill-in-the-blank-text" class="slide level2">
-<h2>Fill in the blank text</h2>
-</section><section id="open-question" class="slide level2">
-<h2>Open question</h2>
+</section><section id="fill-in-the-blank-textessay" class="slide level2">
+<h2>Fill in the blank text/essay</h2>
+<pre><code>Question
+========
+
+What statistical test doe you need to test the difference between two independent groups, assuming all parametric assumptions are met?
+
+Solution
+========
+
+The correct answer is independent t-test
+
+Meta-information
+================
+exname: TestSelectionTtest
+extype: string
+exsolution: &quot;independent t-test&quot;
+exsection: Inferential Statistics / Parametric Techniques / t-test / Independent samples means
+exextra[Type]: Test choice</code></pre>
+</section><section id="combinations" class="slide level2">
+<h2>Combinations</h2>
+<pre><code>Question
+========
+
+What are the two properties that you would want a psychological test to have?
+
+Solution
+========
+
+We would like to have a reliable and valid test.
+
+Meta-information
+================
+exname: TestSelectionTtest
+extype: cloze
+exclozetype: string|string
+exsolution: reliability|validity
+exsection: Reliability
+exextra[Type]: Conceptual</code></pre>
 </section><section id="adding-images" class="slide level2 small">
 <h2>Adding images</h2>
 <p>Adding an existing image to your question.</p>
@@ -639,15 +730,50 @@ exextra[Type]: Calculation</code></pre>
 <li>Add the code below at the top of your .Rmd file.</li>
 <li>Add <code>![](myImage.png)</code> at location for image. Replace <code>myImage</code> with your own.</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a>``{r, echo = FALSE, results = &quot;hide&quot;}</span>
-<span id="cb5-2"><a href="#cb5-2"></a>include_supplement(&quot;myImage.png&quot;,</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  dir = find.package(&quot;exams&quot;), recursive = TRUE)</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="bn">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a>``{r, echo = FALSE, results = &quot;hide&quot;}</span>
+<span id="cb8-2"><a href="#cb8-2"></a>include_supplement(&quot;myImage.png&quot;,</span>
+<span id="cb8-3"><a href="#cb8-3"></a>  dir = find.package(&quot;exams&quot;), recursive = TRUE)</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="bn">```</span></span></code></pre></div>
 </section></section>
-<section id="adding-taxonomy" class="title-slide slide level1"><h1>Adding Taxonomy</h1></section>
-<section id="adding-tags" class="title-slide slide level1"><h1>Adding tags</h1></section>
-<section id="compiling-your-item" class="title-slide slide level1"><h1>compiling your item</h1></section>
-<section id="quality-check" class="title-slide slide level1"><h1>Quality check</h1></section>
+<section><section id="adding-meta-information" class="title-slide slide level1"><h1>Adding meta information</h1></section><section id="statistics-taxonomy" class="slide level2">
+<h2>Statistics Taxonomy</h2>
+<p>You can add the taxonomy to the <code>exsection</code> attribute in the meta information.</p>
+<pre><code>Meta-information
+================
+exsection: Descriptive statistics / Summary Statistics / Measures of Spread / Standard Deviation, Inferential Statistics / Parametric Techniques / t-test / One sample mean</code></pre>
+<ul>
+<li>The <a href="https://sharestats.github.io/Statistics_Taxonomy/Statistics_Taxonomy.html#Assigning_taxonomy">taxonomy tree can be found here</a>.</li>
+<li>Multiple paths can be added by using a comma as seperator.</li>
+<li>Only add path that is most specific for the question.</li>
+<li><strong>New lines are not allowed</strong></li>
+</ul>
+</section><section id="adding-tags" class="slide level2">
+<h2>Adding Tags</h2>
+<p>You can add tags to the <code>exextra[]</code> attribute in the meta information.</p>
+<pre><code>Meta-information
+================
+exextra[Type]: Calculation, Data manipulation
+exextra[Program]: SPSS
+exextra[Language]: English
+exextra[Level]: Statistical Literacy</code></pre>
+<ul>
+<li>We have four categories that can be used <a href="https://sharestats.github.io/Statistics_Taxonomy/Statistics_Taxonomy.html#Assigning_taxonomy">tag tab</a>.</li>
+<li>Multiple tags can be added by using a comma as seperator.</li>
+<li>Type, Language and level are required. Only use Program when needed.</li>
+<li><strong>New lines are not allowed</strong></li>
+</ul>
+</section></section>
+<section><section id="compiling-your-item" class="title-slide slide level1"><h1>compiling your item</h1></section><section id="html-example" class="slide level2">
+<h2>HTML example</h2>
+<p>You are required to compile the item to HTML. Run the <code>exams2html()</code> function to create an HTML file.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># install.packages(&quot;exams&quot;, dependencies = TRUE)</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">library</span>(exams)</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="kw">exams2html</span>(<span class="st">&quot;YourItem.Rmd&quot;</span>)</span></code></pre></div>
+</section></section>
+<section><section id="quality-check" class="title-slide slide level1"><h1>Quality check</h1></section><section id="procedure-1" class="slide level2">
+<h2>Procedure</h2>
+<p>Follow the quality checklist available in the teams general channel.</p>
+</section></section>
     </div>
   </div>
 

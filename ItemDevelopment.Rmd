@@ -1,7 +1,7 @@
 ---
 title: "ShareStats"
 subtitle: "Item Development"
-date: "19 mar 2021"
+date: "24 mar 2021"
 output: 
   revealjs::revealjs_presentation:
     css: "style.css"
@@ -32,7 +32,9 @@ Goal of ShareStats
 - compiling your item
 - Quality check
 
-# R-studio
+# 
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png)
 
 ## Installation
 
@@ -61,6 +63,32 @@ library(exams)
 
 [R/Exams resources page here](http://www.r-exams.org/resources/). 
 
+## Procedure
+
+Resource: Procedure item development in teams.
+
+1. Go to project folder
+2. Navigate to desired taxonomy level 1 folder
+3. Create a new folder for each new item
+4. Name your item following convention
+5. Create HTML version
+6. Quality check
+
+## Naming convention
+
+<small>
+[abbreviation institution]-[lowest taxonomy level for item]-[nummber ###]-[NL/EN]
+</small>
+
+example: 
+
+* uva-regression-001-nl.Rmd
+
+If available:
+
+* uva-regression-001-nl-graph01.jpg 
+* uva-regression-001-nl-data01.sav
+
 # Item types
 
 There are five item types available in R ([Resource](http://www.r-exams.org/intro/dynamic/)).
@@ -69,7 +97,7 @@ There are five item types available in R ([Resource](http://www.r-exams.org/intr
 * **Multiple answer:** `extype: mchoice` (m: multiple)
 * **Fill in the blank numbers:** `extype: num`
 * **Fill in the blank text/essay:** `extype: string`
-* **Combinatie van bovenstaande:** `extype: cloze`
+* **Combinations:** `extype: cloze`
 
 ## General item structur
 
@@ -123,6 +151,42 @@ exsection: Descriptive statistics / Summary Statistics / Measures of Location / 
 exextra[Type]: Calculation
 ```
 
+## Multiple answer
+
+```{}
+Question
+========
+
+Which are parametric tests?
+
+Answerlist
+----------
+* t-test
+* signed-rank test
+* ANOVA
+
+Solution
+========
+
+The correct answer the ANOVA test
+
+Answerlist
+----------
+* True. t-test
+* False. signed rank test
+* True. ANOVA
+
+Meta-information
+================
+exname: parametric
+extype: mchoice
+exsolution: 101
+exsection: Inferential Statistics / Non-parametric Techniques / Signed Rank test
+exextra[Type]: Conceptual, Test choice
+exextra[Language]: English
+exextra[Level]: Statistical Reasoning
+```
+
 ## Fill in the blank number
 
 ```{}
@@ -146,7 +210,7 @@ exsection: Descriptive statistics / Summary Statistics / Measures of Location / 
 exextra[Type]: Calculation
 ```
 
-## Fill in the blank text
+## Fill in the blank text/essay
 
 ```{}
 Question
@@ -168,7 +232,28 @@ exsection: Inferential Statistics / Parametric Techniques / t-test / Independent
 exextra[Type]: Test choice
 ```
 
-## Open question
+## Combinations
+
+```{}
+Question
+========
+
+What are the two properties that you would want a psychological test to have?
+
+Solution
+========
+
+We would like to have a reliable and valid test.
+
+Meta-information
+================
+exname: TestSelectionTtest
+extype: cloze
+exclozetype: string|string
+exsolution: reliability|validity
+exsection: Reliability
+exextra[Type]: Conceptual
+```
 
 ## Adding images {.small}
 
@@ -185,10 +270,56 @@ include_supplement("myImage.png",
 ```
 ````
 
-# Adding Taxonomy
+# Adding meta information
 
-# Adding tags
+## Statistics Taxonomy
+
+You can add the taxonomy to the `exsection` attribute in the meta information.
+
+```{}
+Meta-information
+================
+exsection: Descriptive statistics / Summary Statistics / Measures of Spread / Standard Deviation, Inferential Statistics / Parametric Techniques / t-test / One sample mean
+```
+
+* The [taxonomy tree can be found here](https://sharestats.github.io/Statistics_Taxonomy/Statistics_Taxonomy.html#Assigning_taxonomy).
+* Multiple paths can be added by using a comma as seperator.
+* Only add path that is most specific for the question.
+* **New lines are not allowed**
+
+## Adding Tags
+
+You can add tags to the `exextra[]` attribute in the meta information.
+
+```{}
+Meta-information
+================
+exextra[Type]: Calculation, Data manipulation
+exextra[Program]: SPSS
+exextra[Language]: English
+exextra[Level]: Statistical Literacy
+```
+
+* We have four categories that can be used [tag tab](https://sharestats.github.io/Statistics_Taxonomy/Statistics_Taxonomy.html#Assigning_taxonomy).
+* Multiple tags can be added by using a comma as seperator.
+* Type, Language and level are required. Only use Program when needed.
+* **New lines are not allowed**
 
 # compiling your item
 
+## HTML example
+
+You are required to compile the item to HTML. Run the `exams2html()` function to create an HTML file.
+
+```{r, eval=FALSE}
+# install.packages("exams", dependencies = TRUE)
+library(exams)
+exams2html("YourItem.Rmd")
+```
+
 # Quality check
+
+## Procedure
+
+Follow the quality checklist available in the teams general channel.
+
