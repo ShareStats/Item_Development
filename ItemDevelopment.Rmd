@@ -18,7 +18,9 @@ output:
 library(exams)
 ```
 
-# ShareStats
+# 
+
+![](images/InfShareStatsSquare.png)
 
 Goal of ShareStats
 

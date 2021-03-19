@@ -1,5 +1,12 @@
+```{r, echo = FALSE, results = "hide"}
+include_supplement("../images/InfShareStatsSquare.png",
+  dir = find.package("exams"), recursive = TRUE)
+```
+
 Question
 ========
+
+![](../images/InfShareStatsSquare.png)
 
 What is the average of the numbers 3, 5 and 7?
 
