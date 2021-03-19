@@ -1,0 +1,194 @@
+---
+title: "ShareStats"
+subtitle: "Item Development"
+date: "19 mar 2021"
+output: 
+  revealjs::revealjs_presentation:
+    css: "style.css"
+    theme: white #simple #black
+    highlight: pygments
+    transition: slide #fade #slide
+    background_transition: slide
+    center: true
+    self_contained: false
+---
+
+```{r, echo=FALSE}
+# install.packages("exams", dependencies = TRUE)
+library(exams)
+```
+
+# ShareStats
+
+Goal of ShareStats
+
+# Outline
+
+- R-studio
+- The R/exams library
+- Item types
+- Adding Taxonomy
+- Adding tags
+- compiling your item
+- Quality check
+
+# R-studio
+
+## Installation
+
+- Install R
+- Install Rstudio
+
+## The interface
+
+- Rstudio basics
+
+# The R/exams package
+
+![R/exams](http://www.r-exams.org/images/oneforall.svg)
+
+## Relevant Resources
+
+* [R/exams website](http://www.r-exams.org)
+* [First Steps](http://www.r-exams.org/tutorials/first_steps/)
+
+## Install R/exams
+
+```{r, eval=FALSE}
+install.packages("exams", dependencies = TRUE)
+library(exams)
+```
+
+[R/Exams resources page here](http://www.r-exams.org/resources/). 
+
+# Item types
+
+There are five item types available in R ([Resource](http://www.r-exams.org/intro/dynamic/)).
+
+* **Multiple choice:** `extype: schoice` (s: single)
+* **Multiple answer:** `extype: mchoice` (m: multiple)
+* **Fill in the blank numbers:** `extype: num`
+* **Fill in the blank text/essay:** `extype: string`
+* **Combinatie van bovenstaande:** `extype: cloze`
+
+## General item structur
+
+```{}
+Question
+========
+
+Solution
+========
+
+Meta-information
+================
+exname: 
+extype: 
+exsolution: 
+exsection: 
+exextra[]:
+```
+
+## Multiple choice
+
+```{}
+Question
+========
+
+What is the average of the numbers 3, 5 and 7?
+
+Answerlist
+----------
+* 4
+* 5
+* 6
+
+Solution
+========
+
+The correct answer is 5.
+
+Answerlist
+----------
+* False. 4
+* True. 5
+* False. 6
+
+Meta-information
+================
+exname: Rekens som
+extype: schoice
+exsolution: 010
+exsection: Descriptive statistics / Summary Statistics / Measures of Location / Mean
+exextra[Type]: Calculation
+```
+
+## Fill in the blank number
+
+```{}
+Question
+========
+
+What is the average of the numbers 3, 5 and 7?
+
+Solution
+========
+
+The correct answer is 5.
+
+Meta-information
+================
+exname: Rekens som
+extype: num
+exsolution: 5
+extol: 0
+exsection: Descriptive statistics / Summary Statistics / Measures of Location / Mean
+exextra[Type]: Calculation
+```
+
+## Fill in the blank text
+
+```{}
+Question
+========
+
+What statistical test doe you need to test the difference between two independent groups, assuming all parametric assumptions are met?
+
+Solution
+========
+
+The correct answer is independent t-test
+
+Meta-information
+================
+exname: TestSelectionTtest
+extype: string
+exsolution: "independent t-test"
+exsection: Inferential Statistics / Parametric Techniques / t-test / Independent samples means
+exextra[Type]: Test choice
+```
+
+## Open question
+
+## Adding images {.small}
+
+Adding an existing image to your question.
+
+1. Add the image file (.png .jpg) to the same folder as your question.
+2. Add the code below at the top of your .Rmd file.
+3. Add `![](myImage.png)` at location for image. Replace `myImage` with your own.
+
+````markdown
+`r ''```{r, echo = FALSE, results = "hide"}
+include_supplement("myImage.png",
+  dir = find.package("exams"), recursive = TRUE)
+```
+````
+
+# Adding Taxonomy
+
+# Adding tags
+
+# compiling your item
+
+# Quality check
