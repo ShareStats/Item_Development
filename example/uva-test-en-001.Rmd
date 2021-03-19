@@ -1,0 +1,18 @@
+Question
+========
+
+What is the average of the numbers 3, 5 and 7?
+
+Solution
+========
+
+The correct answer is 5.
+
+Meta-information
+================
+exname: uva-test-en-001
+extype: num
+exsolution: 5
+extol: 0
+exsection: Descriptive statistics / Summary Statistics / Measures of Location / Mean
+exextra[Type]: Calculation
