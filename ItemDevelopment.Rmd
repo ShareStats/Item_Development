@@ -63,7 +63,7 @@ library(exams)
 
 [R/Exams resources page here](http://www.r-exams.org/resources/). 
 
-## Procedure
+# Procedure
 
 Resource: Procedure item development in teams.
 
