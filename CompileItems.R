@@ -8,4 +8,3 @@ saveHTML    = paste0(substring(ItemRmdPath, nchar(DirPath)+1, nchar(ItemRmdPath)
 
 exams2html(file = ItemRmdPath, dir = DirPath, name = saveHTML)
 
-
