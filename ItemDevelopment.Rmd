@@ -100,6 +100,7 @@ There are five item types available in R ([Resource](http://www.r-exams.org/intr
 * **Fill in the blank numbers:** `extype: num`
 * **Fill in the blank text/essay:** `extype: string`
 * **Combinations:** `extype: cloze`
+* Adding images and attachments
 
 ## General item structur
 
@@ -257,18 +258,18 @@ exsection: Reliability
 exextra[Type]: Conceptual
 ```
 
-## Adding images {.small}
+## Adding images and attachments {.small}
 
-Adding an existing image to your question.
+Adding image or files to your question.
 
-1. Add the image file (.png .jpg) to the same folder as your question.
+1. Add the image or file (.png .jpg .sav etc.) to the same folder as your question.
 2. Add the code below at the top of your .Rmd file.
 3. Add `![](myImage.png)` at location for image. Replace `myImage` with your own.
+4. Add `[Download](myFile.xls)` at location for the download. Replace `myFile` with your own.
 
 ````markdown
 `r ''```{r, echo = FALSE, results = "hide"}
-include_supplement("myImage.png",
-  dir = find.package("exams"), recursive = TRUE)
+include_supplement("myImage.png", recursive = TRUE)
 ```
 ````
 
@@ -316,7 +317,7 @@ You are required to compile the item to HTML. Run the `exams2html()` function to
 ```{r, eval=FALSE}
 # install.packages("exams", dependencies = TRUE)
 library(exams)
-exams2html("YourItem.Rmd")
+exams2html(file = "")
 ```
 
 # Quality check

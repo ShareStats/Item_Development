@@ -583,6 +583,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li><strong>Fill in the blank numbers:</strong> <code>extype: num</code></li>
 <li><strong>Fill in the blank text/essay:</strong> <code>extype: string</code></li>
 <li><strong>Combinations:</strong> <code>extype: cloze</code></li>
+<li>Adding images and attachments</li>
 </ul></section><section id="general-item-structur" class="slide level2">
 <h2>General item structur</h2>
 <pre><code>Question
@@ -721,18 +722,18 @@ exclozetype: string|string
 exsolution: reliability|validity
 exsection: Reliability
 exextra[Type]: Conceptual</code></pre>
-</section><section id="adding-images" class="slide level2 small">
-<h2>Adding images</h2>
-<p>Adding an existing image to your question.</p>
+</section><section id="adding-images-and-attachments" class="slide level2 small">
+<h2>Adding images and attachments</h2>
+<p>Adding image or files to your question.</p>
 <ol type="1">
-<li>Add the image file (.png .jpg) to the same folder as your question.</li>
+<li>Add the image or file (.png .jpg .sav etc.) to the same folder as your question.</li>
 <li>Add the code below at the top of your .Rmd file.</li>
 <li>Add <code>![](myImage.png)</code> at location for image. Replace <code>myImage</code> with your own.</li>
+<li>Add <code>[Download](myFile.xls)</code> at location for the download. Replace <code>myFile</code> with your own.</li>
 </ol>
 <div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a>``{r, echo = FALSE, results = &quot;hide&quot;}</span>
-<span id="cb8-2"><a href="#cb8-2"></a>include_supplement(&quot;myImage.png&quot;,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>  dir = find.package(&quot;exams&quot;), recursive = TRUE)</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="bn">```</span></span></code></pre></div>
+<span id="cb8-2"><a href="#cb8-2"></a>include_supplement(&quot;myImage.png&quot;, recursive = TRUE)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="bn">```</span></span></code></pre></div>
 </section></section>
 <section><section id="adding-meta-information" class="title-slide slide level1"><h1>Adding meta information</h1></section><section id="statistics-taxonomy" class="slide level2">
 <h2>Statistics Taxonomy</h2>
