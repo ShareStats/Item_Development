@@ -2,7 +2,7 @@
 title: "ShareStats"
 subtitle: "Item Development"
 date: "24 mar 2021"
-output: 
+output:
   revealjs::revealjs_presentation:
     css: "style.css"
     theme: white #simple #black
@@ -11,6 +11,12 @@ output:
     background_transition: slide
     center: true
     self_contained: false
+  # html_document:
+  #   toc: TRUE
+  #   toc_float: TRUE
+  #   pandoc_args: [
+  #     "--output=ItemDevelopmentHandout.html"
+  #   ]
 ---
 
 ```{r, echo=FALSE}
