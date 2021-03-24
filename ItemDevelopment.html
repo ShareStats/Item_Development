@@ -523,24 +523,24 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section id="section" class="title-slide slide level1"><h1></h1><p><img data-src="images/InfShareStatsSquare.png" /></p>
 <p>Goal of ShareStats</p></section>
 <section id="outline" class="title-slide slide level1"><h1>Outline</h1><ul>
-<li>R-studio</li>
-<li>The R/exams library</li>
+<li>RStudio</li>
+<li>The R/exams package</li>
 <li>Item types</li>
-<li>Adding Taxonomy</li>
+<li>Adding taxonomy</li>
 <li>Adding tags</li>
-<li>compiling your item</li>
+<li>Compiling your item</li>
 <li>Quality check</li>
 </ul></section>
 <section><section id="section-1" class="title-slide slide level1"><h1></h1><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png" /></p></section><section id="installation" class="slide level2">
 <h2>Installation</h2>
 <ul>
-<li>Install R</li>
-<li>Install Rstudio</li>
+<li><a href="https://www.google.com/search?rls=en&amp;q=how+to+install+r&amp;ie=UTF-8&amp;oe=UTF-8">Install R</a></li>
+<li><a href="https://www.google.com/search?rls=en&amp;q=how+to+install+rstudio&amp;ie=UTF-8&amp;oe=UTF-8">Install Rstudio</a></li>
 </ul>
 </section><section id="the-interface" class="slide level2">
 <h2>The interface</h2>
 <ul>
-<li>Rstudio basics</li>
+<li><a href="https://bookdown.org/gary_a_napier/induction_-_introduction_to_r/rstudio-interface.html">Rstudio basics</a></li>
 </ul>
 </section></section>
 <section><section id="the-rexams-package" class="title-slide slide level1"><h1>The R/exams package</h1><p><img data-src="http://www.r-exams.org/images/oneforall.svg" alt="R/exams" /></p></section><section id="relevant-resources" class="slide level2">
@@ -560,11 +560,11 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Go to project folder</li>
 <li>Navigate to desired taxonomy level 1 folder</li>
 <li>Create a new folder for each new item</li>
-<li>Name your item following convention</li>
+<li>Name your item following instruction</li>
 <li>Create HTML version</li>
 <li>Quality check</li>
-</ol></section><section id="naming-convention" class="slide level2">
-<h2>Naming convention</h2>
+</ol></section><section id="naming-instruction" class="slide level2">
+<h2>Naming instruction</h2>
 <p><small> [abbreviation institution]-[lowest taxonomy level for item]-[nummber ###]-[NL/EN] </small></p>
 <p>example:</p>
 <ul>
@@ -619,9 +619,9 @@ The correct answer is 5.
 
 Answerlist
 ----------
-* False. 4
-* True. 5
-* False. 6
+* You got it wrong
+* Yes you got it
+* This is the wrong answer
 
 Meta-information
 ================
@@ -688,7 +688,7 @@ exextra[Type]: Calculation</code></pre>
 <pre><code>Question
 ========
 
-What statistical test doe you need to test the difference between two independent groups, assuming all parametric assumptions are met?
+What statistical test do you need to test the difference between two independent groups, assuming all parametric assumptions are met?
 
 Solution
 ========
@@ -707,21 +707,31 @@ exextra[Type]: Test choice</code></pre>
 <pre><code>Question
 ========
 
-What are the two properties that you would want a psychological test to have?
+Given are the following numbers: 1, 2, 3, 4, 5, 6. 
+
+Answerlist
+----------
+
+* What is the sample mean? 
+* What is the estimated population standard deviation?
 
 Solution
 ========
 
-We would like to have a reliable and valid test.
+Answerlist
+----------
+
+* The sample mean is 3.5.
+* The estimated population standard deviation is 1.87.
 
 Meta-information
 ================
-exname: TestSelectionTtest
+exname: MeandAndSD
 extype: cloze
-exclozetype: string|string
-exsolution: reliability|validity
-exsection: Reliability
-exextra[Type]: Conceptual</code></pre>
+exclozetype: num|num
+exsolution: 3.5|1.870829
+extol: 0.01
+exextra[Type]: Calculate</code></pre>
 </section><section id="adding-images-and-attachments" class="slide level2 small">
 <h2>Adding images and attachments</h2>
 <p>Adding image or files to your question.</p>
@@ -736,7 +746,7 @@ exextra[Type]: Conceptual</code></pre>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="bn">```</span></span></code></pre></div>
 </section></section>
 <section><section id="adding-meta-information" class="title-slide slide level1"><h1>Adding meta information</h1></section><section id="statistics-taxonomy" class="slide level2">
-<h2>Statistics Taxonomy</h2>
+<h2>Statistics taxonomy</h2>
 <p>You can add the taxonomy to the <code>exsection</code> attribute in the meta information.</p>
 <pre><code>Meta-information
 ================
@@ -763,12 +773,12 @@ exextra[Level]: Statistical Literacy</code></pre>
 <li><strong>New lines are not allowed</strong></li>
 </ul>
 </section></section>
-<section><section id="compiling-your-item" class="title-slide slide level1"><h1>compiling your item</h1></section><section id="html-example" class="slide level2">
+<section><section id="compiling-your-item" class="title-slide slide level1"><h1>Compiling your item</h1></section><section id="html-example" class="slide level2">
 <h2>HTML example</h2>
-<p>You are required to compile the item to HTML. Run the <code>exams2html()</code> function to create an HTML file.</p>
+<p>You are required to compile the item to HTML. Run the <code>exams2html()</code> function to test your .Rmd file.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># install.packages(&quot;exams&quot;, dependencies = TRUE)</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="kw">library</span>(exams)</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="kw">exams2html</span>(<span class="st">&quot;YourItem.Rmd&quot;</span>)</span></code></pre></div>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="kw">exams2html</span>(<span class="dt">file =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 </section></section>
 <section><section id="quality-check" class="title-slide slide level1"><h1>Quality check</h1></section><section id="procedure-1" class="slide level2">
 <h2>Procedure</h2>

@@ -26,12 +26,12 @@ Goal of ShareStats
 
 # Outline
 
-- R-studio
-- The R/exams library
+- RStudio
+- The R/exams package
 - Item types
-- Adding Taxonomy
+- Adding taxonomy
 - Adding tags
-- compiling your item
+- Compiling your item
 - Quality check
 
 # 
@@ -40,12 +40,12 @@ Goal of ShareStats
 
 ## Installation
 
-- Install R
-- Install Rstudio
+- [Install R](https://www.google.com/search?rls=en&q=how+to+install+r&ie=UTF-8&oe=UTF-8)
+- [Install Rstudio](https://www.google.com/search?rls=en&q=how+to+install+rstudio&ie=UTF-8&oe=UTF-8)
 
 ## The interface
 
-- Rstudio basics
+- [Rstudio basics](https://bookdown.org/gary_a_napier/induction_-_introduction_to_r/rstudio-interface.html)
 
 # The R/exams package
 
@@ -72,11 +72,11 @@ Resource: Procedure item development in teams.
 1. Go to project folder
 2. Navigate to desired taxonomy level 1 folder
 3. Create a new folder for each new item
-4. Name your item following convention
+4. Name your item following instruction
 5. Create HTML version
 6. Quality check
 
-## Naming convention
+## Naming instruction
 
 <small>
 [abbreviation institution]-[lowest taxonomy level for item]-[nummber ###]-[NL/EN]
@@ -141,9 +141,9 @@ The correct answer is 5.
 
 Answerlist
 ----------
-* False. 4
-* True. 5
-* False. 6
+* You got it wrong
+* Yes you got it
+* This is the wrong answer
 
 Meta-information
 ================
@@ -219,7 +219,7 @@ exextra[Type]: Calculation
 Question
 ========
 
-What statistical test doe you need to test the difference between two independent groups, assuming all parametric assumptions are met?
+What statistical test do you need to test the difference between two independent groups, assuming all parametric assumptions are met?
 
 Solution
 ========
@@ -241,21 +241,31 @@ exextra[Type]: Test choice
 Question
 ========
 
-What are the two properties that you would want a psychological test to have?
+Given are the following numbers: 1, 2, 3, 4, 5, 6. 
+
+Answerlist
+----------
+
+* What is the sample mean? 
+* What is the estimated population standard deviation?
 
 Solution
 ========
 
-We would like to have a reliable and valid test.
+Answerlist
+----------
+
+* The sample mean is 3.5.
+* The estimated population standard deviation is 1.87.
 
 Meta-information
 ================
-exname: TestSelectionTtest
+exname: MeandAndSD
 extype: cloze
-exclozetype: string|string
-exsolution: reliability|validity
-exsection: Reliability
-exextra[Type]: Conceptual
+exclozetype: num|num
+exsolution: 3.5|1.870829
+extol: 0.01
+exextra[Type]: Calculate
 ```
 
 ## Adding images and attachments {.small}
@@ -275,7 +285,7 @@ include_supplement("myImage.png", recursive = TRUE)
 
 # Adding meta information
 
-## Statistics Taxonomy
+## Statistics taxonomy
 
 You can add the taxonomy to the `exsection` attribute in the meta information.
 
@@ -308,11 +318,11 @@ exextra[Level]: Statistical Literacy
 * Type, Language and level are required. Only use Program when needed.
 * **New lines are not allowed**
 
-# compiling your item
+# Compiling your item
 
 ## HTML example
 
-You are required to compile the item to HTML. Run the `exams2html()` function to create an HTML file.
+You are required to compile the item to HTML. Run the `exams2html()` function to test your .Rmd file.
 
 ```{r, eval=FALSE}
 # install.packages("exams", dependencies = TRUE)
