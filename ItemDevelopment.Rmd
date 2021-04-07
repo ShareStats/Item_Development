@@ -3,20 +3,20 @@ title: "ShareStats"
 subtitle: "Item Development"
 date: "24 mar 2021"
 output:
-  revealjs::revealjs_presentation:
-    css: "style.css"
-    theme: white #simple #black
-    highlight: pygments
-    transition: slide #fade #slide
-    background_transition: slide
-    center: true
-    self_contained: false
-  # html_document:
-  #   toc: TRUE
-  #   toc_float: TRUE
-  #   pandoc_args: [
-  #     "--output=ItemDevelopmentHandout.html"
-  #   ]
+  # revealjs::revealjs_presentation:
+  #   css: "style.css"
+  #   theme: white #simple #black
+  #   highlight: pygments
+  #   transition: slide #fade #slide
+  #   background_transition: slide
+  #   center: true
+  #   self_contained: false
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    pandoc_args: [
+      "--output=ItemDevelopmentHandout.html"
+    ]
 ---
 
 ```{r, echo=FALSE}
@@ -284,7 +284,7 @@ Adding image or files to your question.
 4. Add `[Download](myFile.xls)` at location for the download. Replace `myFile` with your own.
 
 ````markdown
-`r ''```{r, echo = FALSE, results = "hide"}
+`r ''````{r, echo = FALSE, results = "hide"}
 include_supplement("myImage.png", recursive = TRUE)
 ```
 ````
