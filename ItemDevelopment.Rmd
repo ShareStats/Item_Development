@@ -336,6 +336,9 @@ You are required to compile the item to HTML. Run the `exams2html()` function to
 # install.packages("exams", dependencies = TRUE)
 library(exams)
 exams2html(file = "")
+exams:::browse_exercise(file = "")
+exams2pdf(file = "")
+exams2pando(file = "")
 ```
 
 # Quality check
