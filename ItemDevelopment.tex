@@ -1,0 +1,572 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{ShareStats}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Item Development}
+\author{}
+\date{\vspace{-2.5em}19 jan 2022}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={ShareStats},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{section}{%
+\section{}\label{section}}
+
+\begin{figure}
+\includegraphics[width=0.2\linewidth]{images/InfShareStatsSquare} \caption{ShareStats logo}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+Goal of ShareStats
+
+\hypertarget{outline}{%
+\section{Outline}\label{outline}}
+
+\begin{itemize}
+\tightlist
+\item
+  RStudio
+\item
+  The R/exams package
+\item
+  Item types
+\item
+  Adding taxonomy
+\item
+  Adding tags
+\item
+  Compiling your item
+\item
+  Quality check
+\end{itemize}
+
+\hypertarget{section-1}{%
+\section{}\label{section-1}}
+
+\includegraphics{https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png}
+
+\hypertarget{installation}{%
+\subsection{Installation}\label{installation}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.google.com/search?rls=en\&q=how+to+install+r\&ie=UTF-8\&oe=UTF-8}{Install
+  R}
+\item
+  \href{https://www.google.com/search?rls=en\&q=how+to+install+rstudio\&ie=UTF-8\&oe=UTF-8}{Install
+  Rstudio}
+\end{itemize}
+
+\hypertarget{the-interface}{%
+\subsection{The interface}\label{the-interface}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://bookdown.org/gary_a_napier/induction_-_introduction_to_r/rstudio-interface.html}{Rstudio
+  basics}
+\end{itemize}
+
+\hypertarget{the-rexams-package}{%
+\section{The R/exams package}\label{the-rexams-package}}
+
+\begin{figure}
+\centering
+\includegraphics{http://www.r-exams.org/images/oneforall.svg}
+\caption{R/exams}
+\end{figure}
+
+\hypertarget{relevant-resources}{%
+\subsection{Relevant Resources}\label{relevant-resources}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{http://www.r-exams.org}{R/exams website}
+\item
+  \href{http://www.r-exams.org/tutorials/first_steps/}{First Steps}
+\end{itemize}
+
+\hypertarget{install-rexams}{%
+\subsection{Install R/exams}\label{install-rexams}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"exams"}\NormalTok{, }\AttributeTok{dependencies =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(exams)}
+\end{Highlighting}
+\end{Shaded}
+
+\href{http://www.r-exams.org/resources/}{R/Exams resources page here}.
+
+\hypertarget{procedure}{%
+\section{Procedure}\label{procedure}}
+
+Resource: Procedure item development in teams.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Go to project folder
+\item
+  Navigate to desired taxonomy level 1 folder
+\item
+  Create a new folder for each new item
+\item
+  Name your item following instruction
+\item
+  Create HTML version
+\item
+  Quality check
+\end{enumerate}
+
+\hypertarget{naming-instruction}{%
+\subsection{Naming instruction}\label{naming-instruction}}
+
+{[}abbreviation institution{]}-{[}lowest taxonomy level for
+item{]}-{[}nummber \#\#\#{]}-{[}nl/en{]}
+
+All in small caps.
+
+example:
+
+\begin{itemize}
+\tightlist
+\item
+  uva-regression-001-nl.Rmd
+\end{itemize}
+
+If available:
+
+\begin{itemize}
+\tightlist
+\item
+  uva-regression-001-nl-graph01.jpg
+\item
+  uva-regression-001-nl-data01.sav
+\end{itemize}
+
+\hypertarget{item-types}{%
+\section{Item types}\label{item-types}}
+
+There are five item types available in R
+(\href{http://www.r-exams.org/intro/dynamic/}{Resource}).
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Multiple choice:} \texttt{extype:\ schoice} (s: single)
+\item
+  \textbf{Multiple answer:} \texttt{extype:\ mchoice} (m: multiple)
+\item
+  \textbf{Fill in the blank numbers:} \texttt{extype:\ num}
+\item
+  \textbf{Fill in the blank text/essay:} \texttt{extype:\ string}
+\item
+  \textbf{Combinations:} \texttt{extype:\ cloze}
+\item
+  Adding images and attachments
+\end{itemize}
+
+\hypertarget{general-item-structur}{%
+\subsection{General item structur}\label{general-item-structur}}
+
+\begin{verbatim}
+Question
+========
+
+Solution
+========
+
+Meta-information
+================
+exname: 
+extype: 
+exsolution: 
+exsection: 
+exextra[]:
+\end{verbatim}
+
+\hypertarget{multiple-choice}{%
+\subsection{Multiple choice}\label{multiple-choice}}
+
+\begin{verbatim}
+Question
+========
+
+What is the average of the numbers 3, 5 and 7?
+
+Answerlist
+----------
+* 4
+* 5
+* 6
+
+Solution
+========
+
+The correct answer is 5.
+
+Answerlist
+----------
+* You got it wrong
+* Yes you got it
+* This is the wrong answer
+
+Meta-information
+================
+exname: Rekens som
+extype: schoice
+exsolution: 010
+exsection: Descriptive statistics/Summary Statistics/Measures of Location/Mean
+exextra[Type]: Calculation
+\end{verbatim}
+
+\hypertarget{multiple-answer}{%
+\subsection{Multiple answer}\label{multiple-answer}}
+
+\begin{verbatim}
+Question
+========
+
+Which are parametric tests?
+
+Answerlist
+----------
+* t-test
+* signed-rank test
+* ANOVA
+
+Solution
+========
+
+The correct answer the ANOVA test
+
+Answerlist
+----------
+* True. t-test
+* False. signed rank test
+* True. ANOVA
+
+Meta-information
+================
+exname: parametric
+extype: mchoice
+exsolution: 101
+exsection: Inferential Statistics/Non-parametric Techniques/Signed Rank test
+exextra[Type]: Conceptual, Test choice
+exextra[Language]: English
+exextra[Level]: Statistical Reasoning
+\end{verbatim}
+
+\hypertarget{fill-in-the-blank-number}{%
+\subsection{Fill in the blank number}\label{fill-in-the-blank-number}}
+
+\begin{verbatim}
+Question
+========
+
+What is the average of the numbers 3, 5 and 7?
+
+Solution
+========
+
+The correct answer is 5.
+
+Meta-information
+================
+exname: Rekens som
+extype: num
+exsolution: 5
+extol: 0
+exsection: Descriptive statistics/Summary Statistics/Measures of Location/Mean
+exextra[Type]: Calculation
+\end{verbatim}
+
+\hypertarget{fill-in-the-blank-textessay}{%
+\subsection{Fill in the blank
+text/essay}\label{fill-in-the-blank-textessay}}
+
+\begin{verbatim}
+Question
+========
+
+What statistical test do you need to test the difference between two independent groups, assuming all parametric assumptions are met?
+
+Solution
+========
+
+The correct answer is independent t-test
+
+Meta-information
+================
+exname: TestSelectionTtest
+extype: string
+exsolution: "independent t-test"
+exsection: Inferential Statistics/Parametric Techniques/t-test/Independent samples means
+exextra[Type]: Test choice
+\end{verbatim}
+
+\hypertarget{combinations}{%
+\subsection{Combinations}\label{combinations}}
+
+\begin{verbatim}
+Question
+========
+
+Given are the following numbers: 1, 2, 3, 4, 5, 6. 
+
+Answerlist
+----------
+
+* What is the sample mean? 
+* What is the estimated population standard deviation?
+
+Solution
+========
+
+Answerlist
+----------
+
+* The sample mean is 3.5.
+* The estimated population standard deviation is 1.87.
+
+Meta-information
+================
+exname: MeandAndSD
+extype: cloze
+exclozetype: num|num
+exsolution: 3.5|1.870829
+extol: 0.01
+exextra[Type]: Calculate
+\end{verbatim}
+
+\hypertarget{adding-images-and-attachments}{%
+\subsection{Adding images and
+attachments}\label{adding-images-and-attachments}}
+
+Adding image or files to your question.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Add the image or file (.png .jpg .sav etc.) to the same folder as your
+  question.
+\item
+  Add the code below at the top of your .Rmd file.
+\item
+  Add \texttt{!{[}{]}(myImage.png)} at location for image. Replace
+  \texttt{myImage} with your own.
+\item
+  Add \texttt{{[}Download{]}(myFile.xls)} at location for the download.
+  Replace \texttt{myFile} with your own.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, echo = FALSE, results = "hide"\}}
+\InformationTok{include\_supplement("myImage.png", recursive = TRUE)}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{adding-meta-information}{%
+\section{Adding meta information}\label{adding-meta-information}}
+
+\hypertarget{statistics-taxonomy}{%
+\subsection{Statistics taxonomy}\label{statistics-taxonomy}}
+
+You can add the taxonomy to the \texttt{exsection} attribute in the meta
+information.
+
+\begin{verbatim}
+Meta-information
+================
+exsection: Descriptive statistics/Summary Statistics/Measures of Spread/Standard Deviation, Inferential Statistics/Parametric Techniques/t-test/One sample mean
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  The
+  \href{https://sharestats.github.io/Statistics_Taxonomy/Statistics_Taxonomy.html\#Assigning_taxonomy}{taxonomy
+  tree can be found here}.
+\item
+  Multiple paths can be added by using a comma as seperator.
+\item
+  Only add path that is most specific for the question.
+\item
+  \textbf{New lines are not allowed}
+\end{itemize}
+
+\hypertarget{adding-tags}{%
+\subsection{Adding Tags}\label{adding-tags}}
+
+You can add tags to the \texttt{exextra{[}{]}} attribute in the meta
+information.
+
+\begin{verbatim}
+Meta-information
+================
+exextra[Type]: Calculation, Data manipulation
+exextra[Program]: SPSS
+exextra[Language]: English
+exextra[Level]: Statistical Literacy
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  We have four categories that can be used
+  \href{https://sharestats.github.io/Statistics_Taxonomy/Statistics_Taxonomy.html\#Assigning_taxonomy}{tag
+  tab}.
+\item
+  Multiple tags can be added by using a comma as seperator.
+\item
+  Type, Language and level are required. Only use Program when needed.
+\item
+  \textbf{New lines are not allowed}
+\end{itemize}
+
+\hypertarget{compiling-your-item}{%
+\section{Compiling your item}\label{compiling-your-item}}
+
+\hypertarget{html-example}{%
+\subsection{HTML example}\label{html-example}}
+
+You are required to compile the item to HTML. Run the
+\texttt{exams2html()} function to test your .Rmd file.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages("exams", dependencies = TRUE)}
+\FunctionTok{library}\NormalTok{(exams)}
+\FunctionTok{exams2html}\NormalTok{(}\AttributeTok{file =} \StringTok{""}\NormalTok{)}
+\NormalTok{exams}\SpecialCharTok{:::}\FunctionTok{browse\_exercise}\NormalTok{(}\AttributeTok{file =} \StringTok{""}\NormalTok{)}
+\FunctionTok{exams2pdf}\NormalTok{(}\AttributeTok{file =} \StringTok{""}\NormalTok{)}
+\FunctionTok{exams2pando}\NormalTok{(}\AttributeTok{file =} \StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{quality-check}{%
+\section{Quality check}\label{quality-check}}
+
+\hypertarget{procedure-1}{%
+\subsection{Procedure}\label{procedure-1}}
+
+Follow the quality checklist available in the teams general channel.
+
+\end{document}

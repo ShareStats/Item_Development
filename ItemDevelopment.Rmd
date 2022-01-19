@@ -1,23 +1,34 @@
 ---
 title: "ShareStats"
-subtitle: "Item Development"
-date: "24 mar 2021"
+subtitle: Item Development
+date: "19 jan 2022"
 output:
-  # revealjs::revealjs_presentation:
-  #   css: "style.css"
-  #   theme: white #simple #black
-  #   highlight: pygments
-  #   transition: slide #fade #slide
-  #   background_transition: slide
-  #   center: true
-  #   self_contained: false
-  html_document:
-    toc: TRUE
-    toc_float: TRUE
-    pandoc_args: [
-      "--output=ItemDevelopmentHandout.html"
-    ]
+  revealjs::revealjs_presentation:
+    css: "style.css"
+    theme: white #simple #black
+    highlight: pygments
+    transition: slide #fade #slide
+    background_transition: slide
+    center: true
+    self_contained: false
 ---
+
+```{r, echo=FALSE, eval=FALSE}
+revealjs::revealjs_presentation:
+  css: "style.css"
+  theme: white #simple #black
+  highlight: pygments
+  transition: slide #fade #slide
+  background_transition: slide
+  center: true
+  self_contained: false
+
+  html_document:
+    toc: yes
+    toc_float: yes
+    pandoc_args: --output=ItemDevelopmentHandout.html
+```
+
 
 ```{r, echo=FALSE}
 # install.packages("exams", dependencies = TRUE)
@@ -26,23 +37,15 @@ library(exams)
 
 # 
 
-![](images/InfShareStatsSquare.png)
+```{r, echo=FALSE, fig.cap="ShareStats logo", out.width="20%"}
+knitr::include_graphics("images/InfShareStatsSquare.png")
+```
 
-Goal of ShareStats
+# Rstudio
 
-# Outline
-
-- RStudio
-- The R/exams package
-- Item types
-- Adding taxonomy
-- Adding tags
-- Compiling your item
-- Quality check
-
-# 
-
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png)
+```{r, echo=FALSE, fig.cap="Rstudio logo", out.width="20%"}
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png")
+```
 
 ## Installation
 
@@ -55,7 +58,9 @@ Goal of ShareStats
 
 # The R/exams package
 
-![R/exams](http://www.r-exams.org/images/oneforall.svg)
+```{r, echo=FALSE, fig.cap="exams output", out.width="500%"}
+knitr::include_graphics("http://www.r-exams.org/images/oneforall.svg")
+```
 
 ## Relevant Resources
 
@@ -79,10 +84,10 @@ Resource: Procedure item development in teams.
 2. Navigate to desired taxonomy level 1 folder
 3. Create a new folder for each new item
 4. Name your item following instruction
-5. Create HTML version
+5. Check if items compile to HTML, PDF, etc.
 6. Quality check
 
-## Naming instruction
+# Naming instruction
 
 <small>
 [abbreviation institution]-[lowest taxonomy level for item]-[nummber ###]-[nl/en]
@@ -98,6 +103,12 @@ If available:
 
 * uva-regression-001-nl-graph01.jpg 
 * uva-regression-001-nl-data01.sav
+
+## Multiple languages
+
+When you have an item in multiple languages, you can place them in the same item folder and alter the file name.
+
+* uva-regression-001-**en**.Rmd
 
 # Item types
 
@@ -158,7 +169,7 @@ Meta-information
 exname: Rekens som
 extype: schoice
 exsolution: 010
-exsection: Descriptive statistics/Summary Statistics/Measures of Location/Mean
+exsection: Descriptive statistics / Summary Statistics / Measures of Location/Mean
 exextra[Type]: Calculation
 ```
 
@@ -192,7 +203,7 @@ Meta-information
 exname: parametric
 extype: mchoice
 exsolution: 101
-exsection: Inferential Statistics/Non-parametric Techniques/Signed Rank test
+exsection: Inferential Statistics / Non-parametric Techniques / Signed Rank test
 exextra[Type]: Conceptual, Test choice
 exextra[Language]: English
 exextra[Level]: Statistical Reasoning
@@ -217,7 +228,7 @@ exname: Rekens som
 extype: num
 exsolution: 5
 extol: 0
-exsection: Descriptive statistics/Summary Statistics/Measures of Location/Mean
+exsection: Descriptive statistics / Summary Statistics / Measures of Location/Mean
 exextra[Type]: Calculation
 ```
 
@@ -239,7 +250,7 @@ Meta-information
 exname: TestSelectionTtest
 extype: string
 exsolution: "independent t-test"
-exsection: Inferential Statistics/Parametric Techniques/t-test/Independent samples means
+exsection: Inferential Statistics / Parametric Techniques/t-test / Independent samples means
 exextra[Type]: Test choice
 ```
 
@@ -276,7 +287,7 @@ extol: 0.01
 exextra[Type]: Calculate
 ```
 
-## Adding images and attachments {.small}
+## Adding images or attachments {.small}
 
 Adding image or files to your question.
 
@@ -322,18 +333,31 @@ exextra[Level]: Statistical Literacy
 ```
 
 * We have four categories that can be used [tag tab](https://sharestats.github.io/Statistics_Taxonomy/Statistics_Taxonomy.html#Assigning_taxonomy).
+* Additional tags can be added. For example **G*Power** as a program. Though consult with your team leader first. 
 * Multiple tags can be added by using a comma as seperator.
 * Type, Language and level are required. Only use Program when needed.
 * **New lines are not allowed**
+* level inherits the higher levels. So, **statistical thinking** implies Statistical Reasoning and Statistical Literacy.
+
+# Using R packages
+
+If a question Rmd-file calls a function from an imported package, please ensure that it's always clear from which particular package the function stems.
+
+Ideally, you explicitly specify the source package for each call of an imported function. R has the double colon operator `::` for this and the syntax looks as follows `packages_name::function_name(..)`. For example, if you want to use the function `kable()` from the package `knitr`, please call `knitr::kable(...)`. By the way: an import of the package is in this case not anymore required.
+
+Alternatively, you could always import all required packages in the Rmd-file (e.g. `library(knitr)`) and simply call the functions by their name (e.g. `kable(...)`). This method is however slightly more error-prone, because packages required for other questions might use the same function name and might thus cause conflicts between different questions.
 
 # Compiling your item
 
-## HTML example
+## Check output
 
-You are required to compile the item to HTML. Run the `exams2html()` function to test your .Rmd file.
+You are required to check if the developed items properly work. Run the `exams2html()` function as a simple fast check to test your .Rmd file.
+
+In addition run the following functions to check if the PDF is compiled correctly and if all the meta information is added properly. $\LaTeX$ [must be installed](http:/www.r-exams.org/tutorials/latex) for the PDF function to work.
 
 ```{r, eval=FALSE}
-# install.packages("exams", dependencies = TRUE)
+# install the develpment version to use browse_excersise()
+install.packages("exams", repos = "http://R-Forge.R-project.org", dependencies = TRUE)
 library(exams)
 exams2html(file = "")
 exams:::browse_exercise(file = "")
@@ -343,7 +367,8 @@ exams2pando(file = "")
 
 # Quality check
 
-## Procedure
+## Procedure and Checklists
 
-Follow the quality checklist available in the teams general channel.
+The quality procedure checklist can be downloaded below.
 
+* NL: [kwaliteits checklijst](kwaliteitschecklijst.pdf)

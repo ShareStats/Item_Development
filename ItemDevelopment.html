@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="dcterms.date" content="2021-03-24" />
+  <meta name="dcterms.date" content="2022-01-19" />
   <title>ShareStats</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,19 +12,19 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -44,7 +44,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -509,6 +509,7 @@ style.innerHTML = style_script;
 document.getElementsByTagName('head')[0].appendChild(style);
 </script>
 
+    <script src="ItemDevelopment_files/header-attrs-2.11/header-attrs.js"></script>
 </head>
 <body>
   <div class="reveal">
@@ -517,55 +518,68 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">ShareStats</h1>
   <h1 class="subtitle">Item Development</h1>
-    <h3 class="date">24 mar 2021</h3>
+    <h3 class="date">19 jan 2022</h3>
 </section>
 
-<section id="section" class="title-slide slide level1"><h1></h1><p><img data-src="images/InfShareStatsSquare.png" /></p>
-<p>Goal of ShareStats</p></section>
-<section id="outline" class="title-slide slide level1"><h1>Outline</h1><ul>
-<li>RStudio</li>
-<li>The R/exams package</li>
-<li>Item types</li>
-<li>Adding taxonomy</li>
-<li>Adding tags</li>
-<li>Compiling your item</li>
-<li>Quality check</li>
-</ul></section>
-<section><section id="section-1" class="title-slide slide level1"><h1></h1><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png" /></p></section><section id="installation" class="slide level2">
+<section id="section" class="title-slide slide level1">
+<h1></h1>
+<p><img src="images/InfShareStatsSquare.png" title="ShareStats logo" alt="ShareStats logo" width="20%" /></p>
+</section>
+
+<section>
+<section id="rstudio" class="title-slide slide level1">
+<h1>Rstudio</h1>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png" title="Rstudio logo" alt="Rstudio logo" width="20%" /></p>
+</section>
+<section id="installation" class="slide level2">
 <h2>Installation</h2>
 <ul>
 <li><a href="https://www.google.com/search?rls=en&amp;q=how+to+install+r&amp;ie=UTF-8&amp;oe=UTF-8">Install R</a></li>
 <li><a href="https://www.google.com/search?rls=en&amp;q=how+to+install+rstudio&amp;ie=UTF-8&amp;oe=UTF-8">Install Rstudio</a></li>
 </ul>
-</section><section id="the-interface" class="slide level2">
+</section>
+<section id="the-interface" class="slide level2">
 <h2>The interface</h2>
 <ul>
 <li><a href="https://bookdown.org/gary_a_napier/induction_-_introduction_to_r/rstudio-interface.html">Rstudio basics</a></li>
 </ul>
 </section></section>
-<section><section id="the-rexams-package" class="title-slide slide level1"><h1>The R/exams package</h1><p><img data-src="http://www.r-exams.org/images/oneforall.svg" alt="R/exams" /></p></section><section id="relevant-resources" class="slide level2">
+<section>
+<section id="the-rexams-package" class="title-slide slide level1">
+<h1>The R/exams package</h1>
+<p><img src="http://www.r-exams.org/images/oneforall.svg" title="exams output" alt="exams output" width="500%" /></p>
+</section>
+<section id="relevant-resources" class="slide level2">
 <h2>Relevant Resources</h2>
 <ul>
 <li><a href="http://www.r-exams.org">R/exams website</a></li>
 <li><a href="http://www.r-exams.org/tutorials/first_steps/">First Steps</a></li>
 </ul>
-</section><section id="install-rexams" class="slide level2">
+</section>
+<section id="install-rexams" class="slide level2">
 <h2>Install R/exams</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;exams&quot;</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(exams)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;exams&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exams)</span></code></pre></div>
 <p><a href="http://www.r-exams.org/resources/">R/Exams resources page here</a>.</p>
 </section></section>
-<section><section id="procedure" class="title-slide slide level1"><h1>Procedure</h1><p>Resource: Procedure item development in teams.</p>
+<section id="procedure" class="title-slide slide level1">
+<h1>Procedure</h1>
+<p>Resource: Procedure item development in teams.</p>
 <ol type="1">
 <li>Go to project folder</li>
 <li>Navigate to desired taxonomy level 1 folder</li>
 <li>Create a new folder for each new item</li>
 <li>Name your item following instruction</li>
-<li>Create HTML version</li>
+<li>Check if items compile to HTML, PDF, etc.</li>
 <li>Quality check</li>
-</ol></section><section id="naming-instruction" class="slide level2">
-<h2>Naming instruction</h2>
-<p><small> [abbreviation institution]-[lowest taxonomy level for item]-[nummber ###]-[NL/EN] </small></p>
+</ol>
+</section>
+
+<section>
+<section id="naming-instruction" class="title-slide slide level1">
+<h1>Naming instruction</h1>
+<p><small> [abbreviation institution]-[lowest taxonomy level for item]-[nummber ###]-[nl/en] </small></p>
+<p>All in small caps.</p>
 <p>example:</p>
 <ul>
 <li>uva-regression-001-nl.Rmd</li>
@@ -575,8 +589,18 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>uva-regression-001-nl-graph01.jpg</li>
 <li>uva-regression-001-nl-data01.sav</li>
 </ul>
+</section>
+<section id="multiple-languages" class="slide level2">
+<h2>Multiple languages</h2>
+<p>When you have an item in multiple languages, you can place them in the same item folder and alter the file name.</p>
+<ul>
+<li>uva-regression-001-<strong>en</strong>.Rmd</li>
+</ul>
 </section></section>
-<section><section id="item-types" class="title-slide slide level1"><h1>Item types</h1><p>There are five item types available in R (<a href="http://www.r-exams.org/intro/dynamic/">Resource</a>).</p>
+<section>
+<section id="item-types" class="title-slide slide level1">
+<h1>Item types</h1>
+<p>There are five item types available in R (<a href="http://www.r-exams.org/intro/dynamic/">Resource</a>).</p>
 <ul>
 <li><strong>Multiple choice:</strong> <code>extype: schoice</code> (s: single)</li>
 <li><strong>Multiple answer:</strong> <code>extype: mchoice</code> (m: multiple)</li>
@@ -584,7 +608,9 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li><strong>Fill in the blank text/essay:</strong> <code>extype: string</code></li>
 <li><strong>Combinations:</strong> <code>extype: cloze</code></li>
 <li>Adding images and attachments</li>
-</ul></section><section id="general-item-structur" class="slide level2">
+</ul>
+</section>
+<section id="general-item-structur" class="slide level2">
 <h2>General item structur</h2>
 <pre><code>Question
 ========
@@ -599,7 +625,8 @@ extype:
 exsolution: 
 exsection: 
 exextra[]:</code></pre>
-</section><section id="multiple-choice" class="slide level2">
+</section>
+<section id="multiple-choice" class="slide level2">
 <h2>Multiple choice</h2>
 <pre><code>Question
 ========
@@ -628,9 +655,10 @@ Meta-information
 exname: Rekens som
 extype: schoice
 exsolution: 010
-exsection: Descriptive statistics / Summary Statistics / Measures of Location / Mean
+exsection: Descriptive statistics / Summary Statistics / Measures of Location/Mean
 exextra[Type]: Calculation</code></pre>
-</section><section id="multiple-answer" class="slide level2">
+</section>
+<section id="multiple-answer" class="slide level2">
 <h2>Multiple answer</h2>
 <pre><code>Question
 ========
@@ -663,7 +691,8 @@ exsection: Inferential Statistics / Non-parametric Techniques / Signed Rank test
 exextra[Type]: Conceptual, Test choice
 exextra[Language]: English
 exextra[Level]: Statistical Reasoning</code></pre>
-</section><section id="fill-in-the-blank-number" class="slide level2">
+</section>
+<section id="fill-in-the-blank-number" class="slide level2">
 <h2>Fill in the blank number</h2>
 <pre><code>Question
 ========
@@ -681,9 +710,10 @@ exname: Rekens som
 extype: num
 exsolution: 5
 extol: 0
-exsection: Descriptive statistics / Summary Statistics / Measures of Location / Mean
+exsection: Descriptive statistics / Summary Statistics / Measures of Location/Mean
 exextra[Type]: Calculation</code></pre>
-</section><section id="fill-in-the-blank-textessay" class="slide level2">
+</section>
+<section id="fill-in-the-blank-textessay" class="slide level2">
 <h2>Fill in the blank text/essay</h2>
 <pre><code>Question
 ========
@@ -700,9 +730,10 @@ Meta-information
 exname: TestSelectionTtest
 extype: string
 exsolution: &quot;independent t-test&quot;
-exsection: Inferential Statistics / Parametric Techniques / t-test / Independent samples means
+exsection: Inferential Statistics / Parametric Techniques/t-test / Independent samples means
 exextra[Type]: Test choice</code></pre>
-</section><section id="combinations" class="slide level2">
+</section>
+<section id="combinations" class="slide level2">
 <h2>Combinations</h2>
 <pre><code>Question
 ========
@@ -732,8 +763,9 @@ exclozetype: num|num
 exsolution: 3.5|1.870829
 extol: 0.01
 exextra[Type]: Calculate</code></pre>
-</section><section id="adding-images-and-attachments" class="slide level2 small">
-<h2>Adding images and attachments</h2>
+</section>
+<section id="adding-images-or-attachments" class="slide level2 small">
+<h2 class="small">Adding images or attachments</h2>
 <p>Adding image or files to your question.</p>
 <ol type="1">
 <li>Add the image or file (.png .jpg .sav etc.) to the same folder as your question.</li>
@@ -741,23 +773,29 @@ exextra[Type]: Calculate</code></pre>
 <li>Add <code>![](myImage.png)</code> at location for image. Replace <code>myImage</code> with your own.</li>
 <li>Add <code>[Download](myFile.xls)</code> at location for the download. Replace <code>myFile</code> with your own.</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="bn">```{r, echo = FALSE, results = &quot;hide&quot;}</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="bn">include_supplement(&quot;myImage.png&quot;, recursive = TRUE)</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="bn">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE, results = &quot;hide&quot;}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">include_supplement(&quot;myImage.png&quot;, recursive = TRUE)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </section></section>
-<section><section id="adding-meta-information" class="title-slide slide level1"><h1>Adding meta information</h1></section><section id="statistics-taxonomy" class="slide level2">
+<section>
+<section id="adding-meta-information" class="title-slide slide level1">
+<h1>Adding meta information</h1>
+
+</section>
+<section id="statistics-taxonomy" class="slide level2">
 <h2>Statistics taxonomy</h2>
 <p>You can add the taxonomy to the <code>exsection</code> attribute in the meta information.</p>
 <pre><code>Meta-information
 ================
-exsection: Descriptive statistics / Summary Statistics / Measures of Spread / Standard Deviation, Inferential Statistics / Parametric Techniques / t-test / One sample mean</code></pre>
+exsection: Descriptive statistics/Summary Statistics/Measures of Spread/Standard Deviation, Inferential Statistics/Parametric Techniques/t-test/One sample mean</code></pre>
 <ul>
 <li>The <a href="https://sharestats.github.io/Statistics_Taxonomy/Statistics_Taxonomy.html#Assigning_taxonomy">taxonomy tree can be found here</a>.</li>
 <li>Multiple paths can be added by using a comma as seperator.</li>
 <li>Only add path that is most specific for the question.</li>
 <li><strong>New lines are not allowed</strong></li>
 </ul>
-</section><section id="adding-tags" class="slide level2">
+</section>
+<section id="adding-tags" class="slide level2">
 <h2>Adding Tags</h2>
 <p>You can add tags to the <code>exextra[]</code> attribute in the meta information.</p>
 <pre><code>Meta-information
@@ -768,21 +806,48 @@ exextra[Language]: English
 exextra[Level]: Statistical Literacy</code></pre>
 <ul>
 <li>We have four categories that can be used <a href="https://sharestats.github.io/Statistics_Taxonomy/Statistics_Taxonomy.html#Assigning_taxonomy">tag tab</a>.</li>
+<li>Additional tags can be added. For example **G*Power** as a program. Though consult with your team leader first.</li>
 <li>Multiple tags can be added by using a comma as seperator.</li>
 <li>Type, Language and level are required. Only use Program when needed.</li>
 <li><strong>New lines are not allowed</strong></li>
+<li>level inherits the higher levels. So, <strong>statistical thinking</strong> implies Statistical Reasoning and Statistical Literacy.</li>
 </ul>
 </section></section>
-<section><section id="compiling-your-item" class="title-slide slide level1"><h1>Compiling your item</h1></section><section id="html-example" class="slide level2">
-<h2>HTML example</h2>
-<p>You are required to compile the item to HTML. Run the <code>exams2html()</code> function to test your .Rmd file.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># install.packages(&quot;exams&quot;, dependencies = TRUE)</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">library</span>(exams)</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="kw">exams2html</span>(<span class="dt">file =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<section id="using-r-packages" class="title-slide slide level1">
+<h1>Using R packages</h1>
+<p>If a question Rmd-file calls a function from an imported package, please ensure that it’s always clear from which particular package the function stems.</p>
+<p>Ideally, you explicitly specify the source package for each call of an imported function. R has the double colon operator <code>::</code> for this and the syntax looks as follows <code>packages_name::function_name(..)</code>. For example, if you want to use the function <code>kable()</code> from the package <code>knitr</code>, please call <code>knitr::kable(...)</code>. By the way: an import of the package is in this case not anymore required.</p>
+<p>Alternatively, you could always import all required packages in the Rmd-file (e.g. <code>library(knitr)</code>) and simply call the functions by their name (e.g. <code>kable(...)</code>). This method is however slightly more error-prone, because packages required for other questions might use the same function name and might thus cause conflicts between different questions.</p>
+</section>
+
+<section>
+<section id="compiling-your-item" class="title-slide slide level1">
+<h1>Compiling your item</h1>
+
+</section>
+<section id="check-output" class="slide level2">
+<h2>Check output</h2>
+<p>You are required to check if the developed items properly work. Run the <code>exams2html()</code> function as a simple fast check to test your .Rmd file.</p>
+<p>In addition run the following functions to check if the PDF is compiled correctly and if all the meta information is added properly. <span class="math inline">\(\LaTeX\)</span> <a href="http:/www.r-exams.org/tutorials/latex">must be installed</a> for the PDF function to work.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install the develpment version to use browse_excersise()</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;exams&quot;</span>, <span class="at">repos =</span> <span class="st">&quot;http://R-Forge.R-project.org&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exams)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">exams2html</span>(<span class="at">file =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>exams<span class="sc">:::</span><span class="fu">browse_exercise</span>(<span class="at">file =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">exams2pdf</span>(<span class="at">file =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">exams2pando</span>(<span class="at">file =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 </section></section>
-<section><section id="quality-check" class="title-slide slide level1"><h1>Quality check</h1></section><section id="procedure-1" class="slide level2">
-<h2>Procedure</h2>
-<p>Follow the quality checklist available in the teams general channel.</p>
+<section>
+<section id="quality-check" class="title-slide slide level1">
+<h1>Quality check</h1>
+
+</section>
+<section id="procedure-and-checklists" class="slide level2">
+<h2>Procedure and Checklists</h2>
+<p>The quality procedure checklist can be downloaded below.</p>
+<ul>
+<li>NL: <a href="kwaliteitschecklijst.pdf">kwaliteits checklijst</a></li>
+</ul>
 </section></section>
     </div>
   </div>
@@ -795,14 +860,52 @@ exextra[Level]: Statistical Literacy</code></pre>
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
         // Push each slide change to the browser history
         history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
         // Vertical centering of slides
         center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Loop the presentation
+        loop: false,
+        // Change the presentation direction to be RTL
+        rtl: false,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
         // Transition style
         transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
         // Transition style for full page slide backgrounds
         backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
 
 
 
