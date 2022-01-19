@@ -3,14 +3,10 @@ title: "ShareStats"
 subtitle: Item Development
 date: "19 jan 2022"
 output:
-  revealjs::revealjs_presentation:
-    css: "style.css"
-    theme: white #simple #black
-    highlight: pygments
-    transition: slide #fade #slide
-    background_transition: slide
-    center: true
-    self_contained: false
+  html_document:
+    toc: yes
+    toc_float: yes
+    pandoc_args: --output=ItemDevelopmentHandout.html
 ---
 
 ```{r, echo=FALSE, eval=FALSE}
