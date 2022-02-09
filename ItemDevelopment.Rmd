@@ -54,7 +54,7 @@ knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/d/
 
 # The R/exams package
 
-```{r, echo=FALSE, fig.cap="exams output", out.width="500%"}
+```{r, echo=FALSE, fig.cap="exams output", out.width="50%"}
 knitr::include_graphics("http://www.r-exams.org/images/oneforall.svg")
 ```
 
