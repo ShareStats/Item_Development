@@ -3,10 +3,14 @@ title: "ShareStats"
 subtitle: Item Development
 date: "19 jan 2022"
 output:
-  html_document:
-    toc: yes
-    toc_float: yes
-    pandoc_args: --output=ItemDevelopmentHandout.html
+  revealjs::revealjs_presentation:
+    css: "style.css"
+    theme: white #simple #black
+    highlight: pygments
+    transition: slide #fade #slide
+    background_transition: slide
+    center: true
+    self_contained: false
 ---
 
 ```{r, echo=FALSE, eval=FALSE}
@@ -353,12 +357,12 @@ In addition run the following functions to check if the PDF is compiled correctl
 
 ```{r, eval=FALSE}
 # install the develpment version to use browse_excersise()
-install.packages("exams", repos = "http://R-Forge.R-project.org", dependencies = TRUE)
+install.packages("exams", repos = "http://R-Forge.R-project.org", dependencies = TRUE, type = "source")
 library(exams)
 exams2html(file = "")
 exams:::browse_exercise(file = "")
 exams2pdf(file = "")
-exams2pando(file = "")
+exams2pandoc(file = "")
 ```
 
 # Quality check
